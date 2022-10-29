@@ -32,5 +32,24 @@ namespace ProyectoFinal_API.Controllers
             }
 
         }
+
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("RegistarUsuarioCliente")]
+        public ActionResult<int> CrearUsuarioCliente(LoginObj usuario)
+        {
+            try
+            {
+                return Ok(loginM.RegistrarUsuarioCliente(usuario, _configuration));
+            }
+            catch (Exception ex)
+            {
+                bitacoraM.RegistrarErrores(usuario.Correo, ex, ControllerContext.ActionDescriptor.ActionName, _configuration);
+                return BadRequest("Se presentó un inconveniente");
+            }
+
+        }
+
     }
 }

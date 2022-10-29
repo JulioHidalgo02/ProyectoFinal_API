@@ -33,5 +33,16 @@ namespace ProyectoFinal_API.Models
             }
         }
 
+        public int RegistrarUsuarioCliente(LoginObj usuario, IConfiguration stringConnection)
+        {
+            using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
+            {
+                return connection.Execute("CrearUsuarioCliente",
+                    new { usuario.Cedula, usuario.Nombre, usuario.PApellido, usuario.SApellido, usuario.Telefono, usuario.Correo, usuario.Contrasenia, usuario.Direccion },
+                    commandType: CommandType.StoredProcedure);
+
+            }
+        }
+
     }
 }
