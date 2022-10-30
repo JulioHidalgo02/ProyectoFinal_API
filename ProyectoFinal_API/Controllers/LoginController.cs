@@ -27,7 +27,7 @@ namespace ProyectoFinal_API.Controllers
             catch (Exception ex)
             {
 
-                bitacoraM.RegistrarErrores(usuario.Correo, ex, ControllerContext.ActionDescriptor.ActionName, _configuration);
+                bitacoraM.RegistrarErrores(usuario.Cedula, ex, ControllerContext.ActionDescriptor.ActionName, _configuration);
                 return BadRequest("Se presentó un inconveniente");
             }
 
@@ -37,7 +37,7 @@ namespace ProyectoFinal_API.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("RegistarUsuarioCliente")]
-        public ActionResult<int> CrearUsuarioCliente(LoginObj usuario)
+        public ActionResult<int> CrearUsuarioCliente(LoginObj2 usuario)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace ProyectoFinal_API.Controllers
             }
             catch (Exception ex)
             {
-                bitacoraM.RegistrarErrores(usuario.Correo, ex, ControllerContext.ActionDescriptor.ActionName, _configuration);
+                
                 return BadRequest("Se presentó un inconveniente");
             }
 

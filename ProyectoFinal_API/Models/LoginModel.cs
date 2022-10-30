@@ -33,7 +33,7 @@ namespace ProyectoFinal_API.Models
             }
         }
 
-        public int RegistrarUsuarioCliente(LoginObj usuario, IConfiguration stringConnection)
+        public int RegistrarUsuarioCliente(LoginObj2 usuario, IConfiguration stringConnection)
         {
             using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
             {
