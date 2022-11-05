@@ -51,5 +51,22 @@ namespace ProyectoFinal_API.Controllers
 
         }
 
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("RegistarUsuarioAdministrador")]
+        public ActionResult<int> CrearUsuarioAdministrador(LoginObj2 usuario)
+        {
+            try
+            {
+                return Ok(loginM.RegistrarUsuarioAdministrador(usuario, _configuration));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Se presentó un inconveniente");
+            }
+
+        }
     }
 }

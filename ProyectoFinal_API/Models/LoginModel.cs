@@ -44,5 +44,16 @@ namespace ProyectoFinal_API.Models
             }
         }
 
+        public int RegistrarUsuarioAdministrador(LoginObj2 usuario, IConfiguration stringConnection)
+        {
+            using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
+            {
+                return connection.Execute("CrearUsuarioAdministrador",
+                    new { usuario.Cedula, usuario.Nombre, usuario.PApellido, usuario.SApellido, usuario.Telefono, usuario.Correo, usuario.Contrasenia, usuario.Direccion },
+                    commandType: CommandType.StoredProcedure);
+
+            }
+        }
+
     }
 }
