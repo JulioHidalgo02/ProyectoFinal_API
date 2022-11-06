@@ -25,4 +25,12 @@
         public string Direccion { get; set; } = String.Empty;
       
     }
+
+    public class LoginObj3
+    {
+        public string Cedula { get; set; } = String.Empty;
+        public string Contrasenia { get; set; } = String.Empty;
+
+    }
+
 }
