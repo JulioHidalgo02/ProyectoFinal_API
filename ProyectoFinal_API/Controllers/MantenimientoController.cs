@@ -89,6 +89,42 @@ namespace ProyectoFinal_API.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost]
+        [Route("CambiarContrasenia")]
+        public ActionResult<int> CambiarContrasenia(LoginObj3 login)
+        {
+            try
+            {
+                return Ok(mantenimientoM.CambiarContrasenia(login, _configuration));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Se presentó un inconveniente");
+            }
+
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("EditarUsuario")]
+        public ActionResult<int> EditarUsuario(UsuarioObj usuario)
+        {
+            try
+            {
+                return Ok(mantenimientoM.EditarUsuario(usuario, _configuration));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Se presentó un inconveniente");
+            }
+
+        }
+
+
+
+
+
+        [AllowAnonymous]
         [HttpGet]
         [Route("MostrarProductos")]
         public ActionResult<List<ProductoObj2>> MostrarProductos()
@@ -96,6 +132,22 @@ namespace ProyectoFinal_API.Controllers
             try
             {
                     return Ok(mantenimientoM.MostrarProductos(_configuration));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Se presentó un inconveniente");
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("MostrarVentas")]
+        public ActionResult<List<VentasObj>> MostrarVentas()
+        {
+            try
+            {
+                return Ok(mantenimientoM.MostrarVentas(_configuration));
             }
             catch (Exception ex)
             {
