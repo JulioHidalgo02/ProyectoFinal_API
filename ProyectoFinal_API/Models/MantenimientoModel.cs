@@ -110,6 +110,31 @@ namespace ProyectoFinal_API.Models
             }
         }
 
+        public int CambiarContrasenia(LoginObj3 login, IConfiguration stringConnection)
+        {
+            using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
+            {
+                return connection.Execute("CambiarContrasenia",
+                     new { login.Cedula,login.Contrasenia},
+                     commandType: CommandType.StoredProcedure);
+
+
+            }
+        }
+
+        public int EditarUsuario(UsuarioObj usuario, IConfiguration stringConnection)
+        {
+            using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
+            {
+                return connection.Execute("EditarUsuario",
+                     new { usuario.Correo,usuario.Nombre,usuario.PApellido,usuario.SApellido,usuario.Telefono,usuario.Direccion},
+                     commandType: CommandType.StoredProcedure);
+
+
+            }
+        }
+
+
         public List<ProductoObj2>? MostrarProductos(IConfiguration stringConnection)
         {
             using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
@@ -141,7 +166,38 @@ namespace ProyectoFinal_API.Models
             }
 
         }
-            public ProductoObj2? MostrarUnProducto(ProductoObj2 producto, IConfiguration stringConnection)
+
+        public List<VentasObj>? MostrarVentas(IConfiguration stringConnection)
+        {
+            using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
+            {
+                VentasObj productos = new VentasObj();
+                var datos = connection.Query<VentasObj>("MostrarVentas",
+                    new { }, commandType: CommandType.StoredProcedure).ToList();
+                List<VentasObj> list = new List<VentasObj>();
+                if (datos != null)
+                {
+                    foreach (var item in datos)
+                    {
+                        list.Add(new VentasObj
+                        {
+                            Idventa = item.Idventa,
+                            IdFactura = item.IdFactura,
+                            FechaReporte = item.FechaReporte,
+                            Detalle = item.Detalle,
+                            Total = item.Total
+                        });
+                    }
+
+                    return list;
+                }
+
+                return null;
+
+            }
+
+        }
+        public ProductoObj2? MostrarUnProducto(ProductoObj2 producto, IConfiguration stringConnection)
             {
              using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
              {
