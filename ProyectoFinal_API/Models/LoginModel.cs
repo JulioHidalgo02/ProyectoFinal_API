@@ -16,16 +16,8 @@ namespace ProyectoFinal_API.Models
 
                 if (datos != null)
                 {
-                    usuario.Cedula = datos.Cedula;
-                    usuario.Nombre = datos.Nombre;
-                    usuario.PApellido = datos.PApellido;
-                    usuario.SApellido = datos.SApellido;
-                    usuario.IdRol = datos.IdRol;
-                    usuario.Correo = datos.Correo;
-                    usuario.Contrasenia = String.Empty;
-                    usuario.Direccion = datos.Direccion;
-                    usuario.Telefono = datos.Telefono;
-                    return usuario;
+                    
+                    return datos;
                 }
                 
                 return null;

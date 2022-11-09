@@ -5,6 +5,8 @@ using ProyectoFinal_API.Models;
 
 namespace ProyectoFinal_API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class MantenimientoController : Controller
     {
         private readonly IConfiguration _configuration;

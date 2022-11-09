@@ -5,6 +5,8 @@ using ProyectoFinal_API.Models;
 
 namespace ProyectoFinal_API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class LoginController : Controller
     {
         private readonly IConfiguration _configuration;
@@ -15,6 +17,7 @@ namespace ProyectoFinal_API.Controllers
         {
             _configuration = configuration;
         }
+
         [AllowAnonymous]
         [HttpPost]
         [Route("ValidarUsuario")]
@@ -22,7 +25,13 @@ namespace ProyectoFinal_API.Controllers
         {
             try
             {
-                return Ok(loginM.ValidarUsuario(usuario, _configuration));
+                var datos = loginM.ValidarUsuario(usuario, _configuration);
+                if (datos != null)
+                    return Ok(datos);
+                else
+                    return BadRequest();
+                
+                
             }
             catch (Exception ex)
             {
