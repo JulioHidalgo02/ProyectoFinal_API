@@ -35,8 +35,8 @@ namespace ProyectoFinal_API.Models
         {
             string servidor = "smtp.office365.com";
             int puerto = 587;
-            string correoElectronico = "pruebainvestigacion2022@outlook.es";
-            string contrasenia = "prueba123";
+            string correoElectronico = "pharmacr506@outlook.com";
+            string contrasenia = "Pharma123";
 
             SmtpClient client = new SmtpClient(servidor, puerto);
             client.EnableSsl = true;

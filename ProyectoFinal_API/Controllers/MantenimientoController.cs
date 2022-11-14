@@ -31,7 +31,7 @@ namespace ProyectoFinal_API.Controllers
             }
             catch (Exception ex)
             {
-                bitacoraM.RegistrarErrores(dato.Cedula, ex, ControllerContext.ActionDescriptor.ActionName, _configuration);
+                
                 return BadRequest("Se presentó un inconveniente");
             }
             
@@ -121,11 +121,6 @@ namespace ProyectoFinal_API.Controllers
             }
 
         }
-
-
-
-
-
         [AllowAnonymous]
         [HttpGet]
         [Route("MostrarProductos")]
