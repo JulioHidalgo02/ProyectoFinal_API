@@ -18,4 +18,15 @@
         public string DescripcionProducto { get; set; } = String.Empty;
         public string URLimagen { get; set; } = String.Empty;
     }
+
+    public class ProductObj3
+    {
+        public int ID { get; set; } = 0;
+        public string Nombre { get; set; } = String.Empty;
+        public int Precio { get; set; } = 0;
+        public int CantDisponible { get; set; } = 0;
+        public string Descripcion { get; set; } = String.Empty;
+        public string URL { get; set; } = String.Empty;
+    }
+
 }

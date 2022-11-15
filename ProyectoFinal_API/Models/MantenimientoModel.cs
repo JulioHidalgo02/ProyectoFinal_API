@@ -220,6 +220,31 @@ namespace ProyectoFinal_API.Models
 
            }
         }
+
+        public int EditarProducto(ProductObj3 producto, IConfiguration stringConnection)
+        {
+            using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
+            {
+                return connection.Execute("EditarProducto",
+                     new { producto.ID, producto.Nombre, producto.Precio, producto.CantDisponible, producto.Descripcion, producto.URL },
+                     commandType: CommandType.StoredProcedure);
+
+
+            }
+        }
+
+        public int EliminarProducto(ProductObj3 producto, IConfiguration stringConnection)
+        {
+            using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
+            {
+                var IDPRODUCTO = producto.ID;
+                return connection.Execute("EliminarProducto",
+                     new { IDPRODUCTO},
+                     commandType: CommandType.StoredProcedure);
+
+
+            }
+        }
     }
 }
 

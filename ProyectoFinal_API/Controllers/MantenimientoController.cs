@@ -18,7 +18,7 @@ namespace ProyectoFinal_API.Controllers
         {
             _configuration = configuration;
         }
- 
+
 
         [AllowAnonymous]
         [HttpPost]
@@ -31,10 +31,10 @@ namespace ProyectoFinal_API.Controllers
             }
             catch (Exception ex)
             {
-                
+
                 return BadRequest("Se presentó un inconveniente");
             }
-            
+
         }
 
         [AllowAnonymous]
@@ -128,7 +128,7 @@ namespace ProyectoFinal_API.Controllers
         {
             try
             {
-                    return Ok(mantenimientoM.MostrarProductos(_configuration));
+                return Ok(mantenimientoM.MostrarProductos(_configuration));
             }
             catch (Exception ex)
             {
@@ -168,5 +168,36 @@ namespace ProyectoFinal_API.Controllers
             }
 
         }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("EditarProducto")]
+        public ActionResult<int> EditarProducto(ProductObj3 producto)
+        {
+            try
+            {
+                return Ok(mantenimientoM.EditarProducto(producto, _configuration));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Se presentó un inconveniente");
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("EliminarProducto")]
+        public ActionResult<int> EliminarProducto(ProductObj3 producto)
+        {
+            try
+            {
+                return Ok(mantenimientoM.EliminarProducto(producto, _configuration));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Se presentó un inconveniente");
+            }
+        }
+
     }
 }
