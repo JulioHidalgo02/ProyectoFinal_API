@@ -221,25 +221,25 @@ namespace ProyectoFinal_API.Models
            }
         }
 
-        public int EditarProducto(ProductObj3 producto, IConfiguration stringConnection)
+        public int EditarProducto(ProductoObj2 producto, IConfiguration stringConnection)
         {
             using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
             {
                 return connection.Execute("EditarProducto",
-                     new { producto.ID, producto.Nombre, producto.Precio, producto.CantDisponible, producto.Descripcion, producto.URL },
+                     new { producto.IdInventario, producto.NombreProducto, producto.Precio, producto.CantDisponible, producto.DescripcionProducto, producto.URLimagen },
                      commandType: CommandType.StoredProcedure);
 
 
             }
         }
 
-        public int EliminarProducto(ProductObj3 producto, IConfiguration stringConnection)
+        public int EliminarProducto(ProductoObj2 producto, IConfiguration stringConnection)
         {
             using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
             {
-                var IDPRODUCTO = producto.ID;
+               
                 return connection.Execute("EliminarProducto",
-                     new { IDPRODUCTO},
+                     new { producto.IdInventario },
                      commandType: CommandType.StoredProcedure);
 
 

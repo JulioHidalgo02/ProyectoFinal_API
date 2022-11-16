@@ -172,7 +172,7 @@ namespace ProyectoFinal_API.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("EditarProducto")]
-        public ActionResult<int> EditarProducto(ProductObj3 producto)
+        public ActionResult<int> EditarProducto(ProductoObj2 producto)
         {
             try
             {
@@ -187,7 +187,7 @@ namespace ProyectoFinal_API.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("EliminarProducto")]
-        public ActionResult<int> EliminarProducto(ProductObj3 producto)
+        public ActionResult<int> EliminarProducto(ProductoObj2 producto)
         {
             try
             {
