@@ -77,5 +77,21 @@ namespace ProyectoFinal_API.Controllers
             }
 
         }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("CrearContacto")]
+        public ActionResult<int> CrearContacto(Contacto contacto)
+        {
+            try
+            {
+                return Ok(loginM.CrearContacto(contacto, _configuration));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Se presentó un inconveniente");
+            }
+
+        }
     }
 }

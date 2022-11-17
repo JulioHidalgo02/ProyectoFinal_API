@@ -47,5 +47,16 @@ namespace ProyectoFinal_API.Models
             }
         }
 
+        public int CrearContacto(Contacto contacto, IConfiguration configuration)
+        {
+            using (var connection = new SqlConnection(configuration.GetSection("ConnectionStrings:Connection").Value))
+            {
+                return connection.Execute("dbo.AgregarContacto",
+                    new {  contacto.Nombre, contacto.Apellidos, contacto.Asunto, contacto.Correo, contacto.Mensaje },
+                    commandType: CommandType.StoredProcedure);
+
+            }
+        }
+
     }
 }
