@@ -172,7 +172,7 @@ namespace ProyectoFinal_API.Models
             using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
             {
                 VentasObj productos = new VentasObj();
-                var datos = connection.Query<VentasObj>("MostrarVentas",
+                var datos = connection.Query<VentasObj>("ConsultarVentas",
                     new { }, commandType: CommandType.StoredProcedure).ToList();
                 List<VentasObj> list = new List<VentasObj>();
                 if (datos != null)
@@ -181,10 +181,11 @@ namespace ProyectoFinal_API.Models
                     {
                         list.Add(new VentasObj
                         {
-                            Idventa = item.Idventa,
                             IdFactura = item.IdFactura,
-                            FechaReporte = item.FechaReporte,
-                            Detalle = item.Detalle,
+                            Nombre = item.Nombre,
+                            Correo = item.Correo,
+                            Telefono = item.Telefono,
+                            Fecha = item.Fecha,
                             Total = item.Total
                         });
                     }
@@ -240,6 +241,30 @@ namespace ProyectoFinal_API.Models
                
                 return connection.Execute("EliminarProducto",
                      new { producto.IdInventario },
+                     commandType: CommandType.StoredProcedure);
+
+
+            }
+        }
+
+        public int RegistrarFactura(FacturaObj factura, IConfiguration stringConnection)
+        {
+            using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
+            {
+                return connection.Execute("AgregarFactura",
+                     new {factura.IDUSUARIO},
+                     commandType: CommandType.StoredProcedure);
+
+
+            }
+        }
+
+        public int RegistrarDetalleFactura(FacturaObj factura, IConfiguration stringConnection)
+        {
+            using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
+            {
+                return connection.Execute("AgregarDetalleFactura",
+                     new { factura.CANTCOMPRADA, factura.TOTAL_LINEA, factura.IDPRODUCTO },
                      commandType: CommandType.StoredProcedure);
 
 

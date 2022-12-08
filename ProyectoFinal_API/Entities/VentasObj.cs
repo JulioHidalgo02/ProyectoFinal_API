@@ -2,11 +2,12 @@
 {
     public class VentasObj
     {
-        public int Idventa { get; set; } = 0;
         public int IdFactura { get; set; } = 0;
-        public DateTime FechaReporte { get; set; } = default(DateTime);
-        public string Detalle { get; set; } = String.Empty;
-        public int Total { get; set; } = 0;
+        public string Nombre { get; set; } = string.Empty;
+        public string Correo { get; set; } = string.Empty;
+        public string Telefono { get; set; } = string.Empty;
+        public DateTime Fecha { get; set; } = default(DateTime);
+        public decimal Total { get; set; } = 0;
 
     }
 }

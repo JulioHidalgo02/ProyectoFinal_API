@@ -199,5 +199,36 @@ namespace ProyectoFinal_API.Controllers
             }
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("RegistrarFactura")]
+        public ActionResult<int> RegistrarFactura(FacturaObj factura)
+        {
+            try
+            {
+                return Ok(mantenimientoM.RegistrarFactura(factura, _configuration));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Se presentó un inconveniente");
+            }
+
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("RegistrarDetalleFactura")]
+        public ActionResult<int> RegistrarDetalleFactura(FacturaObj factura)
+        {
+            try
+            {
+                return Ok(mantenimientoM.RegistrarDetalleFactura(factura, _configuration));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Se presentó un inconveniente");
+            }
+
+        }
+
     }
 }
