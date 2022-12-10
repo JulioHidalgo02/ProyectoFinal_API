@@ -127,7 +127,7 @@ namespace ProyectoFinal_API.Models
             using (var connection = new SqlConnection(stringConnection.GetSection("ConnectionStrings:Connection").Value))
             {
                 return connection.Execute("EditarUsuario",
-                     new { usuario.Correo,usuario.Nombre,usuario.PApellido,usuario.SApellido,usuario.Telefono,usuario.Direccion},
+                     new { usuario.Cedula,usuario.Correo,usuario.Nombre,usuario.PApellido,usuario.SApellido,usuario.Telefono,usuario.Direccion},
                      commandType: CommandType.StoredProcedure);
 
 
